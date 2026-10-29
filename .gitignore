@@ -1,0 +1,23 @@
+# Generated production output
+dist/
+node_modules/
+
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+.openai/
+.sites-runtime/
+.sites-checkout/
+
+# Local files and diagnostics
+*.log
+*.tmp
+*.tar.gz
+*.zip
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+work/
+tmp/

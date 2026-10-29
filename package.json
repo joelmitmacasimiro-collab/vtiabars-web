@@ -1,0 +1,14 @@
+{
+  "name": "vitabars-web",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio y catálogo de Vitabars, sin dependencias externas.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "dev": "node scripts/serve.mjs src",
+    "check": "node scripts/check.mjs",
+    "build": "node scripts/build.mjs",
+    "preview": "node scripts/serve.mjs dist"
+  }
+}
