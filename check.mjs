@@ -2,8 +2,8 @@ import {readFile,readdir,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {spawnSync} from 'node:child_process';
-const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const src=path.join(root,'src');
+const root=path.dirname(fileURLToPath(import.meta.url));
+const src=root;
 const errors=[];
 const html=await readFile(path.join(src,'index.html'),'utf8');
 for(const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)){
@@ -20,7 +20,7 @@ for(const f of await readdir(src)){
 }
 const app=await readFile(path.join(src,'app.js'),'utf8');
 for(const match of app.matchAll(/image:'([^']+)'/g)){
- try{await stat(path.join(src,'assets',match[1]))}catch{errors.push(`Falta foto: ${match[1]}`)}
+ try{await stat(path.join(src,match[1]))}catch{errors.push(`Falta foto: ${match[1]}`)}
 }
 const syntax=spawnSync(process.execPath,['--check',path.join(src,'app.js')],{encoding:'utf8'});
 if(syntax.status!==0)errors.push(syntax.stderr.trim());

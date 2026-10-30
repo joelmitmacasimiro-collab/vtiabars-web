@@ -2,9 +2,9 @@ import {createServer} from 'node:http';
 import {readFile,stat} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-const project=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-const folder=process.argv[2]||'src';
-if(!['src','dist'].includes(folder))throw new Error('Usa src o dist.');
+const project=path.dirname(fileURLToPath(import.meta.url));
+const folder=process.argv[2]||'.';
+if(!['.','dist'].includes(folder))throw new Error('Usa . o dist.');
 const root=path.join(project,folder);
 try{await stat(root)}catch{console.error('La carpeta no existe. Ejecuta npm run build para generar dist/.');process.exit(1)}
 const port=Number(process.env.PORT||4173);

@@ -4,11 +4,13 @@
   "private": true,
   "description": "Sitio y catálogo de Vitabars, sin dependencias externas.",
   "type": "module",
-  "engines": { "node": ">=20" },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "dev": "node scripts/serve.mjs src",
-    "check": "node scripts/check.mjs",
-    "build": "node scripts/build.mjs",
-    "preview": "node scripts/serve.mjs dist"
+    "dev": "node serve.mjs",
+    "check": "node check.mjs",
+    "build": "node build.mjs",
+    "preview": "node serve.mjs dist"
   }
 }

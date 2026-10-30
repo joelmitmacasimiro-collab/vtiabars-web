@@ -1,33 +1,29 @@
-# Vitabars
+# Vitabars — archivos en un solo nivel
 
-Web estática de Vitabars con presentación animada, catálogo independiente, filtros, fichas de producto, carrusel adaptable y carrito persistente en el navegador.
+Esta versión contiene todos los archivos sueltos, sin carpetas que debas subir. Incluye HTML, JavaScript, CSS, fotografías, logo transparente, fuentes, licencias y documentación. El diseño y las funciones son los mismos de la entrega final; únicamente se ajustaron las rutas para funcionar en una sola carpeta.
 
-## Requisitos
+## Subir a GitHub
 
-- Node.js 20 o superior con npm para los comandos incluidos.
-- Un navegador moderno.
-- Git y una cuenta de GitHub solo si subirás el proyecto mediante la terminal.
+1. Descomprime el ZIP en tu computadora.
+2. Abre la carpeta descomprimida hasta ver `index.html`, `app.js` y los demás archivos.
+3. En la pantalla de carga de tu repositorio, selecciona **todos esos archivos juntos**. No selecciones la carpeta contenedora ni subas el ZIP.
+4. Confirma la carga. Todos los archivos deben quedar en la raíz del repositorio.
 
-No requiere instalar paquetes, base de datos, variables de entorno ni claves. Las fuentes y las imágenes se sirven desde el propio proyecto.
+Si el selector no muestra `.gitignore`, puedes agregar ese archivo después. No es necesario para que la web se vea, pero evita subir archivos locales o privados en futuras actualizaciones.
 
-## Ejecutar
+La guía ampliada está en [GUIA-GITHUB.md](GUIA-GITHUB.md). Subir archivos al repositorio no publica automáticamente una web.
 
-Descomprime el paquete y abre una terminal en la carpeta que contiene este README y `package.json`:
+## Ejecutar en tu computadora
+
+Requisitos: Node.js 20 o superior con npm y un navegador moderno. No requiere instalar dependencias ni configurar claves.
+
+Abre una terminal **dentro de esta carpeta** y ejecuta:
 
 ```sh
 npm run dev
 ```
 
-Abre `http://127.0.0.1:4173`. Recarga el navegador después de editar. Para detener el servidor, pulsa Ctrl+C.
-
-Si el puerto está ocupado, cambia `PORT` antes de ejecutar. En PowerShell:
-
-```powershell
-$env:PORT = '4180'
-npm run dev
-```
-
-En macOS/Linux: `PORT=4180 npm run dev`.
+Abre `http://127.0.0.1:4173`. Detén el servidor con Ctrl+C. Recarga el navegador después de editar.
 
 ## Comprobar y generar producción
 
@@ -37,57 +33,24 @@ npm run build
 npm run preview
 ```
 
-`check` verifica la sintaxis de JavaScript y los recursos locales. `build` ejecuta esa comprobación y genera una copia de producción en `dist/`, con imágenes, fuentes y sus licencias. No hay compilación ni dependencias de framework: HTML, CSS y JavaScript son los archivos finales. El comando reemplaza únicamente la carpeta generada `dist/`.
+El build comprueba los archivos y genera `dist/` en tu computadora. Esa carpeta es un resultado de producción: **no necesitas subirla al repositorio**, y tampoco viene dentro de este ZIP. Para publicar en un alojamiento estático, entrega todo su contenido. Detén el servidor de desarrollo antes de usar preview con el mismo puerto.
 
-`preview` sirve `dist/` en `http://127.0.0.1:4173`. Detén el servidor de desarrollo antes de usar el mismo puerto.
+Si necesitas otro puerto, en PowerShell ejecuta `$env:PORT='4180'` antes del comando. En macOS/Linux usa `PORT=4180 npm run dev`.
 
-Para publicar en un alojamiento estático, carga **todo el contenido de `dist/`**, conservando su estructura. Las rutas son relativas; funciona también bajo una subcarpeta. El dominio y el HTTPS se configuran en el alojamiento. Subir el código a GitHub no publica la web automáticamente.
+## Editar
 
-## Estructura
+- `index.html`: estructura, historia, lema, redes y WhatsApp.
+- `app.js`: catálogo y precios en el arreglo `PRODUCTS`; carrito y navegación.
+- Los cuatro archivos CSS: diseño, adaptación móvil, recortes de productos y ajustes del logo.
+- Fotografías `.webp`, logo `.png` y fuentes `.ttf`: deben conservarse junto a `index.html`.
+- `serve.mjs`, `check.mjs` y `build.mjs`: comandos de ejecución y producción.
 
-```text
-src/
-  index.html              Estructura y textos
-  app.js                  Catálogo, carrito, vistas y animación
-  styles.css              Estilos base
-  refinements.css         Composición y tipografía
-  product-polish.css      Recortes de productos y carrusel
-  final-details.css       Logos y firma de marca
-  assets/                 Fotografías, logo transparente y fuentes
-scripts/
-  serve.mjs               Servidor local
-  check.mjs               Comprobaciones
-  build.mjs               Generación de dist/
-docs/
-  GITHUB.md               Guía para cargar el repositorio
-  ASSETS.md               Procedencia de recursos
-  VERIFICACION.md          Revisión de esta entrega
-licenses/                 Licencias de las fuentes
-```
+No se deben separar las fotografías o fuentes en carpetas: esta versión ya usa rutas directas a cada archivo.
 
-## Cambiar productos, precios y contacto
+## Estado de la tienda
 
-- `src/app.js`: arreglo `PRODUCTS`. Edita `name`, `line`, `presentation`, `price` e `image`. Los precios están en soles y se muestran con `S/`. `reference: true` identifica el precio de Mini como referencial.
-- `src/index.html`: textos de marca, historia, redes y enlace de WhatsApp. Número configurado: **+51 947 227 596**. Para cambiar el mensaje, modifica el parámetro `text` del enlace `wa.me` usando codificación URL.
-- `src/assets/logo-transparent.png`: logo floral sin fondo. Su tamaño y corrección de color se ajustan en `final-details.css`.
-- `product-polish.css`: contornos del empaque sobre las fotografías originales. Si reemplazas una foto, revisa también su recorte.
+Carrito persistente en el mismo navegador, catálogo adaptable y acceso a WhatsApp +51 947 227 596. El resumen no cobra ni envía pedidos. Mini mantiene precio referencial y el gramaje de Cacao & Cashew está por confirmar. La imagen de la mano es un montaje provisional.
 
-No edites `dist/` como fuente: el siguiente build lo reemplaza. Después de cambiar `src/`, vuelve a ejecutar `npm run build`.
+Se conservan las licencias de Barlow Condensed y DM Sans en los archivos `Barlow-Condensed-OFL.txt` y `DM-Sans-OFL.txt`. La procedencia de imágenes está en [RECURSOS.md](RECURSOS.md).
 
-## Comportamiento y límites actuales
-
-- `#catalogo` abre una vista independiente; las demás anclas muestran la presentación.
-- “Haz tu pedido ya” aparece al final de la secuencia con la mano. La preferencia de movimiento reducido muestra el estado final directamente.
-- El carrito se conserva en `localStorage` del mismo navegador y dominio. No se sincroniza entre dispositivos.
-- El acceso a WhatsApp abre un mensaje preparado; el visitante decide enviarlo.
-- El resumen de carrito no envía pedidos ni cobra. Los pagos y el delivery requieren una integración posterior.
-- Mini mantiene precio referencial y el gramaje de Cacao & Cashew está por confirmar. La mano es un montaje provisional.
-- La nota general “Precios en soles…” fue retirada; los importes y sus monedas permanecen.
-
-## Subir a GitHub
-
-Sigue [la guía paso a paso](docs/GITHUB.md). El paquete no incluye historial Git, configuración del alojamiento privado, contraseñas, tokens ni archivos temporales. La carpeta `dist/` se genera localmente y está ignorada por Git; lo que se versiona es `src/`, los scripts y la documentación.
-
-## Recursos y licencias
-
-Consulta [ASSETS.md](docs/ASSETS.md). Barlow Condensed y DM Sans se distribuyen con sus licencias SIL Open Font License en `licenses/`. La marca y las fotografías pertenecen a sus respectivos titulares. Esta entrega no agrega una licencia pública al código: puedes decidirla antes de hacer público el repositorio.
+El paquete excluye historial Git, credenciales, configuración privada y archivos temporales.
