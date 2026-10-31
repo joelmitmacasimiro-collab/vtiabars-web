@@ -1,43 +1,44 @@
-# Vitabars optimizada — versión 2
+# Vitabars — experiencia completa (31 de octubre de 2026)
 
-## Validación del enlace publicado
+## Actualizar GitHub Pages
 
-Se revisó https://joelmitmacasimiro-collab.github.io/vtiabars-web/ y los archivos del logo, la barra y la fuente principal. Respondieron con HTTP 200. En una carga nueva se mostraron las imágenes y la tipografía.
+1. Descomprime este ZIP.
+2. En el repositorio vtiabars-web, elige Add file → Upload files.
+3. Sube **index.html** a la raíz, con ese nombre exacto, reemplazando el anterior.
+4. Pulsa Commit changes y espera a que termine el despliegue.
+5. Abre https://joelmitmacasimiro-collab.github.io/vtiabars-web/?v=experiencia-20261031-v7
 
-El servidor anuncia `Cache-Control: max-age=600`: las respuestas pueden conservarse en caché durante diez minutos. Esto es compatible con haber visto antes recursos de una entrega anterior. No se observó una limitación de capacidad de GitHub Pages. Una petición al HTML respondió en aproximadamente 0,67 segundos desde el entorno de prueba; ese dato no representa el tiempo de carga total ni garantiza el mismo resultado en cada conexión.
+No subas el ZIP ni una carpeta contenedora. Los otros archivos antiguos pueden quedarse; el nuevo HTML no los solicita. Esta entrega no se ha subido automáticamente a tu GitHub.
 
-## Optimización realizada
+## Cambios
 
-| Recurso | Antes | Ahora |
-| --- | ---: | ---: |
-| Archivo HTML completo | 2,195,259 bytes | 1,295,159 bytes |
-| Logo transparente | 568.907 bytes | 22.060 bytes |
-| Tres fuentes | 184.036 bytes | 55.812 bytes |
+- La mano utiliza una imagen transparente que contiene únicamente piel, dedos y muñeca. Se descartó la máscara anterior, que podía incluir fragmentos del empaque. El archivo original con mano y barra ya no forma parte de los recursos solicitados por la web.
+- La barra animada conserva una sola imagen durante toda la secuencia. La mano sube por separado, sin crecer ni cambiar de opacidad; el movimiento se invierte al subir por la página.
+- Etapa 01: presentación de Superfoods, maca/lúcuma/cacao y una porción de 63.4 g.
+- Etapa 02: ingredientes legibles en la imagen proporcionada, distribuidos en una lista breve.
+- Etapa 03: 10 g de proteína, 5 g de fibra dietética y 282 kcal por barra de 63.4 g, según la ficha del propietario. No son datos aplicados a los demás sabores.
+- El símbolo decorativo se reemplazó por la silueta del logo floral oficial, con tono marrón suave y opacidad .12.
+- WhatsApp se quitó del encabezado. El botón flotante inferior derecho mantiene el número +51 947 227 596 y el mensaje inicial. Se reservó espacio junto a los botones de portada/pedido, y se oculta sobre los diálogos del carrito, productos y resumen.
+- Cacao & Cashew conserva la fotografía original: contorno revisado, giro del conjunto y escala uniforme, sin estirar el empaque ni regenerar sus textos. Se retiraron del recorte los granos ajenos al producto que aparecían en el borde superior.
 
-El archivo completo se redujo un **41.0 %** frente al archivo único anterior. El logo se exportó a WebP sin pérdida, ajustado a 256 × 256 px, suficiente para su tamaño visible y pantallas de alta densidad. Se mantienen sus proporciones y transparencia. Las fuentes se comprimieron a WOFF2 y conservan español, caracteres latinos y puntuación usados por la web.
+El catálogo, los seis productos, precios, filtros, cantidades, carrito persistente, historia y navegación independiente se conservan. Las funciones comerciales son idénticas a la entrega anterior. Pagos y envío automático de pedidos siguen sin conectar.
 
-Las siete fotografías —productos, mano y fundadoras— se conservaron exactamente, verificando sus huellas digitales. No se redujo la calidad de los empaques ni de la mano.
+## Ejecutar o editar
 
-## Qué subir
+**index.html es la versión completa de producción**: contiene HTML, estilos, JavaScript, fotografías, logo y fuentes. No faltan carpetas src ni scripts para publicarlo. No requiere npm, compilación, claves ni dependencias.
 
-1. Descomprime el ZIP.
-2. Sube **únicamente el nuevo `index.html`** a la raíz de `vtiabars-web`, reemplazando el anterior.
-3. Confirma los cambios y espera a que finalice el despliegue de GitHub Pages.
-4. Abre https://joelmitmacasimiro-collab.github.io/vtiabars-web/?v=optimizada-20261029-v2
-5. Si sigue apareciendo una versión antigua, usa Ctrl+F5 o una ventana privada.
+Puedes abrirlo directamente en el navegador. Opcionalmente, con Python instalado, ejecuta `python -m http.server 4173` desde la carpeta y abre http://localhost:4173.
 
-No subas el ZIP ni una carpeta contenedora. No necesitas borrar los demás archivos: todo está incluido en este HTML y los archivos antiguos no se solicitan.
+Los productos, precios, texto de las etapas y funciones están en el bloque vitabars-app. Los estilos están en bloques style. El bloque vitabars-assets contiene imágenes codificadas: no cortes esas cadenas. Las licencias de las fuentes siguen incluidas. El HTML pesa aproximadamente 1.84 MB.
 
-## Comprobaciones
+## Verificación
 
-- Sintaxis de los bloques JavaScript correcta.
-- Logo, barra, mano y fuentes cargados; sin errores de consola.
-- Botón de pedido comprobado al terminar la animación y apertura del catálogo.
-- Carrito: Superfoods + dos Menta & Chocolate = S/ 39.50.
-- Revisión móvil de 390 px y controles del catálogo.
-- Licencias de las fuentes conservadas dentro del HTML.
-- Sin scripts, estilos ni imágenes externas necesarios para la presentación.
+Revisión visual en escritorio a 1280 × 800 y en celular a 390 × 844 y 320 × 740. Se revisaron las etapas de presentación, ingredientes y nutrición, los giros del catálogo y la secuencia de la mano en ambos sentidos.
 
-Se mantienen diseño, precios, filtros, carrusel, historia y WhatsApp. No hay pagos ni envío automático de pedidos. Las mejoras reducen el peso transferido; el tiempo real de carga depende también de la conexión y el dispositivo.
+El botón de pedido abre el catálogo; agregar Cacao & Cashew al carrito produce S/ 13.50. Se comprobó que WhatsApp se oculta con el carrito abierto y que su enlace conserva el número correcto. En móvil, WhatsApp y los botones principales tienen áreas separadas. Sin desplazamiento horizontal del documento ni errores de consola durante las pruebas. Sintaxis y recursos locales comprobados.
 
-Puedes probar `index.html` abriéndolo en tu navegador. No necesita npm ni compilación.
+## Pendientes anteriores
+
+Precio definitivo de Mini, gramaje confirmado de Cacao & Cashew y documentos legales aprobados. La ficha recibida corresponde a Superfoods; no se añadieron cifras de otros sabores. Para mejorar aún más el detalle fotográfico de Cacao, conviene una toma frontal de alta resolución sin granos ni otros ingredientes sobre los sellos del empaque. No se inventaron zonas tapadas ni textos pequeños del producto.
+
+Los archivos fuente no incluyen contraseñas, claves ni archivos temporales. DATOS-Y-RECURSOS.md registra la procedencia del contenido y el trabajo de imágenes.
